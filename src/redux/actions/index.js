@@ -12,6 +12,43 @@ const getPosts = () =>{
     }
 }
 
+const getPostById = (id) =>{
+    console.log("action create post by ID");
+   
+    return {
+        type: "GET_POST",
+        payload: {
+            request:{
+                url: '/posts/' + id,
+                params: {
+                    '_embed': 'comments'
+                }
+            }
+        }
+    }
+    
+}
+
+const createCommentInPost = ({postId, comment, date}) =>{
+    console.log("action createCommentInPost");
+    
+    return {
+        type: "CREATE_COMMENT",
+        payload: {
+            request:{
+                method: 'post',
+                url: '/comments',
+                data: {
+                    postId,
+                    body:comment,
+                    date,
+                    
+                    
+                }
+            }
+        }
+    }
+}
 // const getPostsFail = () =>{
 //     return {
 //         type: ""
@@ -19,5 +56,7 @@ const getPosts = () =>{
 // }
 
 export {
-    getPosts
+    getPosts,
+    getPostById,
+    createCommentInPost
 }

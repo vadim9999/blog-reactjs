@@ -2,12 +2,14 @@
 import React, {Component} from 'react'
 import {connect} from "react-redux"
 import _ from "lodash"
+import uuidv1 from 'uuid/v1'
 
 const mapStateToProps = (state) =>{
     return {
         posts: state.posts
     }
 }
+
 class ConnectedListPosts extends Component{
    
     render(){
@@ -17,13 +19,11 @@ class ConnectedListPosts extends Component{
         return (
             <div> <ul>
                 {_.map(posts, (post) => {
-                    if (_.isArray(post))  
-                        return (<li>{post[0].title}</li>)
-                        else
-                        return (<li>{post.title}</li>)
-                        
-
                     
+                    const {title, body, creator, date } = post;
+                    return (<li key={uuidv1()}>{"Title: " + title + 
+                        "  Description: " + body.slice(0,50) + " Author: "  + creator + " Date: " + date}</li>)
+                       
                 })}
             </ul></div>
            

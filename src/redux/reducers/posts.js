@@ -1,6 +1,7 @@
 
 const initialState = {
-    posts: []
+    posts: [],
+    post:{},
 }
     
 
@@ -19,7 +20,15 @@ const postsReducer = (state = initialState, action) =>{
         case "GET_POSTS_FAIL":
             console.log("Reducers get_posts_fail");
             return state;
-            
+        
+        case "GET_POST_SUCCESS":
+                console.log("Reducer Post success");
+            return {
+                ...state,
+                post: action.payload.data,
+            }
+                return state
+
         default:
             return state
     }
