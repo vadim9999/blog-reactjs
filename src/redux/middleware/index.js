@@ -16,10 +16,15 @@ export const fixDataApiMiddleware = ({dispatch}) =>{
                     post[0] : post;
                     
                 })
+                _.map(posts, (post) => {
+                    if(typeof post.date != 'string') post.date = "0/00/0000"
+                    if(typeof post.creator != 'string') post.creator = "Noname"
+                })
+                
                 action.payload.data = fixedDataPosts
                 return next(action)
             }
-
+            
             return next(action);
         }
     }

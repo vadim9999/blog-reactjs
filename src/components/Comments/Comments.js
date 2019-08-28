@@ -20,7 +20,7 @@ class ConnectedComments extends Component{
         return (
             <ul>
             {_.map(comments, (comment) => {
-                return(<li>{comment.body}</li>)
+                return(<li key={uuidv1()}>{comment.body}</li>)
             })}
             </ul>
         ) 

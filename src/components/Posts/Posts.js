@@ -1,20 +1,22 @@
-import React , {Component} from 'react';
-import {connect} from "react-redux"
+import React, { Component } from 'react';
+import { connect } from "react-redux"
 import { getPosts } from "../../redux/actions"
 import ListPosts from "../ListPosts/ListPosts"
+import {Wrapper, Title, MainBlock} from './styles'
+import './styles.css'
 
-const mapDispatchToProps = (dispatch) =>{
-  
-    return {
-      getPosts : () => dispatch(getPosts())
-    }
-  }
+const mapDispatchToProps = (dispatch) => {
 
-  const mapStateToProps = (state) => {
     return {
-        posts : state.posts
+        getPosts: () => dispatch(getPosts())
     }
-  }
+}
+
+const mapStateToProps = (state) => {
+    return {
+        posts: state.posts
+    }
+}
 class ConnectedPosts extends Component {
     constructor() {
         super();
@@ -22,18 +24,20 @@ class ConnectedPosts extends Component {
         this.onClick = this.onClick.bind(this)
     }
 
+    componentDidMount() {
+        this.props.getPosts()
+    }
     onClick() {
         console.log("Click");
-        this.props.getPosts()
+
     }
 
     render() {
         return (
-            <div className="App">
-                Hi
-            <button onClick={this.onClick}>Get posts</button>
-            <ListPosts />
+            <div className="main-block">
+                <ListPosts />
             </div>
+               
         );
     }
 }

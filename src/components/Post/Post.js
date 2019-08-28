@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import {connect} from "react-redux";
 import {getPostById, createCommentInPost} from '../../redux/actions'
-
+import CreateComment from '../CreateComment/CreateComment'
 import Comments from '../Comments/Comments'
+import PostDetails from '../PostDetails/PostDetails'
+
 const mapDispatchToProps = (dispatch) => {
     return {
         getPostById : (id) => dispatch(getPostById(id)),
@@ -10,27 +12,33 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-class ConnectedPost extends Component{
 
-    
-    render(){
-        console.log("Post component");
+class ConnectedPost extends Component{
+    constructor(){
+        super()
+    }
+
+    componentDidMount(){
+        console.log("component did mount");
         
         console.log(this.props.match.params.postId);
 
         let id = this.props.match.params.postId
         this.props.getPostById(id)
         console.log();
-        // this.props.createCommentInPost({
-        //     id, 
-        //     comment:"Hello!",  
-        //     date: new Date().toLocaleString()})
-        // console.log();
+    }
+
+    render(){
+        console.log("Post component");
+        
+        
+        
         
         return (
             <div>
-                Hi
+                <PostDetails />
                 <Comments />
+                <CreateComment />
             </div>
         )
     }

@@ -13,7 +13,8 @@ const postsReducer = (state = initialState, action) =>{
         case "GET_POSTS_SUCCESS":
             console.log("Get_Posts_Success");
             return Object.assign({}, state, {
-                posts: action.payload.data
+                posts: action.payload.data,
+                post:{}
             })
             
 
@@ -26,6 +27,7 @@ const postsReducer = (state = initialState, action) =>{
             return {
                 ...state,
                 post: action.payload.data,
+                
             }
                 return state
 
