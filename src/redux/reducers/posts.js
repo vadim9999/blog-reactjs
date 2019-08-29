@@ -2,6 +2,7 @@
 const initialState = {
     posts: [],
     post:{},
+    // comments:[]
 }
     
 
@@ -14,7 +15,8 @@ const postsReducer = (state = initialState, action) =>{
             console.log("Get_Posts_Success");
             return Object.assign({}, state, {
                 posts: action.payload.data,
-                post:{}
+                post:{},
+                comments:[]
             })
             
 
@@ -24,12 +26,20 @@ const postsReducer = (state = initialState, action) =>{
         
         case "GET_POST_SUCCESS":
                 console.log("Reducer Post success");
+            
             return {
                 ...state,
                 post: action.payload.data,
-                
+                // comments: action.payload.data.comments
             }
-                return state
+        
+        // case "CREATE_COMMENT_SUCCESS":
+        //     console.log("create comment success");
+            
+        // return{
+        //     ...state,
+        //     comments: action.payload.data.comments
+        // }
 
         default:
             return state

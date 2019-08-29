@@ -1,0 +1,23 @@
+
+.main-block-post{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        margin:25px;
+        padding:5px;
+}
+
+
+.block-post-details{
+    /* border: 2px solid pink; */
+    border-radius:15px;
+    display: flex;
+    max-width:1150px;
+    width: 1150px;
+    /* justify-content: center; */
+    flex-direction: column;
+    background: white;
+
+}
+
+

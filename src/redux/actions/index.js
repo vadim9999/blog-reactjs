@@ -29,8 +29,9 @@ const getPostById = (id) =>{
     
 }
 
-const createCommentInPost = ({postId, comment, date}) =>{
+const createCommentInPost = ({postId, body, date}) =>{
     console.log("action createCommentInPost");
+    console.log(postId);
     
     return {
         type: "CREATE_COMMENT",
@@ -38,9 +39,12 @@ const createCommentInPost = ({postId, comment, date}) =>{
             request:{
                 method: 'post',
                 url: '/comments',
+                // headers: {
+                //     'Content-Type': 'application/json'
+                // },
                 data: {
-                    postId,
-                    body:comment,
+                    postId: parseInt(postId),
+                    body,
                     date,
                     
                     

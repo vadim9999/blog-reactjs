@@ -4,6 +4,7 @@ import {getPostById, createCommentInPost} from '../../redux/actions'
 import CreateComment from '../CreateComment/CreateComment'
 import Comments from '../Comments/Comments'
 import PostDetails from '../PostDetails/PostDetails'
+import "./styles.css"
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -35,10 +36,12 @@ class ConnectedPost extends Component{
         
         
         return (
-            <div>
+            <div className="main-block-post">
+            <div className="block-post-details">
                 <PostDetails />
                 <Comments />
                 <CreateComment />
+            </div>
             </div>
         )
     }

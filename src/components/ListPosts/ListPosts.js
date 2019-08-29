@@ -4,6 +4,7 @@ import { connect } from "react-redux"
 import _ from "lodash"
 import uuidv1 from 'uuid/v1'
 import { Link } from 'react-router-dom'
+import image from "./noimage.svg"
 
 import "./styles.css"
 
@@ -21,7 +22,7 @@ class ConnectedListPosts extends Component {
 
         return (
             <div className="posts-block">
-                <div className="all-posts">
+               
                     <div className="posts">
                         {_.map(posts, (post) => {
 
@@ -29,25 +30,27 @@ class ConnectedListPosts extends Component {
                             return (
                                 <Link style={{textDecoration:'none', color:'black'}} to={`/posts/${id}`}>
                                     <div className="post" key={uuidv1()}>
-                                        <div>
-                                        <a className="title-post">{"Title: " + title}</a>
-                                        <div className="desctiption-post">  {"  Description: " + body.slice(0, 50) }</div>
+                                    
+                                    <div className="date-post"><i>{date.slice(0,9)}</i></div>
+                                    <div className="author">{"Author: " + creator}</div>
+                                        <h2 className="title-post">{title}</h2>
+                                        
+                                        <img src={image} alt="No image" className="image-block" />
+                                        
+                                        <div className="desctiption-post">  {"  Description: " + body.slice(0, 100) }</div>
                                        
-                                        </div>
-                                       <div >
-                                       <div>{" Author: " + creator}</div>
-                                       <div>{" Date: " + ((date != 'undefined' & typeof date == 'string') ? date.slice(0,9): " None") }</div>
-                                       </div>
+                                        
+                                     
+                                       
+                                       
+                                       
                                        
                                     </div>
                                 </Link>)
 
                         })}
                     </div>
-                </div>
-                <div className="recent-posts">
-                    HI
-                </div>
+                
             </div>
 
         )

@@ -1,4 +1,5 @@
 import _ from "lodash"
+import { getPostById } from "../actions";
 
 export const fixDataApiMiddleware = ({dispatch}) =>{
     console.log("MIddleWare");
@@ -8,24 +9,56 @@ export const fixDataApiMiddleware = ({dispatch}) =>{
             console.log("CallMiddleWare");
             console.log(action);
             
-            if(action.type === "GET_POSTS_SUCCESS"){
-                let posts = action.payload.data;
+            switch(action.type){
+                case "GET_POSTS_SUCCESS":
+                        let posts = action.payload.data;
 
-                let fixedDataPosts = _.map(posts,(post) =>{
-                    return  _.isArray(post) ? 
-                    post[0] : post;
+                        let fixedDataPosts = _.map(posts,(post) =>{
+                            return  _.isArray(post) ? 
+                            post[0] : post;
+                            
+                        })
+                        
+                        _.map(posts, (post) => {
+                            post.creator = checkDataOnCorrect(post.creator, "Noname")
+                            post.date = checkDataOnCorrect(post.date, "00/00/0000")
+                        })
+                        
+                        action.payload.data = fixedDataPosts
+                        return next(action)
+
+                case "CREATE_COMMENT_SUCCESS":  
+                    dispatch(getPostById(action.payload.data.postId))
+                    break;
                     
-                })
-                _.map(posts, (post) => {
-                    if(typeof post.date != 'string') post.date = "0/00/0000"
-                    if(typeof post.creator != 'string') post.creator = "Noname"
-                })
-                
-                action.payload.data = fixedDataPosts
-                return next(action)
+                case "GET_POST_SUCCESS":
+                        let post = action.payload.data;
+
+                        
+                        post.title = checkDataOnCorrect(post.title, "No title") 
+                        post.creator = checkDataOnCorrect(post.creator, "Noname")
+                        post.date = checkDataOnCorrect(post.date, "00/00/0000")
+                        post.body = checkDataOnCorrect(post.body, "00/00/0000")
+                        action.payload.data = post;
+                        // post.
+                        // if(post.title == undefined & post.title.length <= 0) post.title = "No title" 
+                        
+                    return next(action);
+                    
+                default:
+                        return next(action);
             }
+
+        
             
-            return next(action);
+
+            
         }
     }
 } 
+
+const checkDataOnCorrect = (data, text)=>{
+    if(data != undefined && data.length >= 0)
+    return  data;
+    else return text;
+}

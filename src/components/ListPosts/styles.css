@@ -1,12 +1,12 @@
 .posts-block{
-    border: 2px solid pink;
+    /* border: 2px solid pink; */
     display: flex;
     max-width:1150px;
     /* justify-content: center; */
     /* flex-direction: row; */
 }
 .all-posts{
-    background: gray;
+    /* background: gray; */
     /* flex:3; */
 }
 
@@ -14,7 +14,6 @@
     /* flex:1; */
 }
 .posts{
-    border: 2px solid red;
     display: flex;
     /* align-items: flex-start; */
     /* flex:1; */
@@ -27,13 +26,41 @@
 
 .post{
     border: 2px solid purple;
-    font-size: larger;
+    /* font-size: larger; */
     display:flex;
-    justify-content: space-between
+    flex-direction: column;
+    /* justify-content: space-between; */
+    background: white;
+    margin:10px;
+    padding:15px;
+    border-radius: 15px;
+    
+    
     /* flex-direction: column; */
     /* flex:0 0 900px; */
     /* flex:1; */
-     /* width: 600px;  */
+     width: 530px; 
     /* height:100px;  */
     
+}
+.date-post{
+    font-size: 14px;
+    margin-bottom: 1em;
+}
+
+.title-post{
+    font-size: 2rem;
+    font-weight:500;
+    margin-top:1px;
+}
+
+.image-block{
+     height: 300px;
+     width:  530px; 
+     margin-bottom:1.5em;
+}
+
+.author{
+    font-size: 14px;
+    margin-bottom: 1em;
 }

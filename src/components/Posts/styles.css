@@ -1,8 +1,9 @@
 .main-block{
     display:flex;
-    border: 2px solid green;
     justify-content: center;
     align-items: center;
-    
+    margin:25px;
+    padding:5px;
+  
 }
 

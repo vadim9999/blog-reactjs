@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from "lodash"
 import uuidv1 from 'uuid/v1'
+import './style.css'
 
 const mapStateToProps = (state) =>{
     return {
@@ -18,11 +19,14 @@ class ConnectedComments extends Component{
         console.log(comments);
         
         return (
-            <ul>
-            {_.map(comments, (comment) => {
-                return(<li key={uuidv1()}>{comment.body}</li>)
+                <div className="comments-block">
+                <h3 className="comment">Comments</h3>
+                {_.map(comments, (comment) => {
+                return(<div className="comments-block-comm" key={uuidv1()}>{comment.body}</div>)
             })}
-            </ul>
+                </div>
+            
+        
         ) 
     }
 }

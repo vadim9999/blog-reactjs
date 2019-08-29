@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from "react-redux"
 import { createCommentInPost } from "../../redux/actions/"
 
+import "./style.css"
+
 const mapDispatchToProps = (dispatch) => {
     return {
         createCommentInPost: (data) => { dispatch(createCommentInPost(data)) }
@@ -35,9 +37,12 @@ class ConnectedCreateComment extends Component {
         e.preventDefault()
         console.log("click");
         const { id, createCommentInPost } = this.props;
+        console.log("Parse In");
+        console.log(typeof parseInt(id));
+        
          createCommentInPost({
-            id, 
-            comment:"Hello!",  
+            postId: id, 
+            body: this.state.comment,  
             date: new Date().toLocaleString()})
         this.setState({
             comment:""
@@ -48,8 +53,8 @@ class ConnectedCreateComment extends Component {
        
         console.log();
         return (
-            <div>
-                <input onChange={this.onHandleChange}></input>
+            <div className="comment-block">
+                <textarea value = {this.state.comment} onChange={this.onHandleChange} name="Text1" cols="40" rows="5"></textarea>
                 <button onClick={this.onHandleClick}>Add comment</button>
             </div>
         )

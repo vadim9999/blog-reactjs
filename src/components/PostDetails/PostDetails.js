@@ -1,27 +1,35 @@
 import React, { Component } from 'react';
-import {connect} from "react-redux"
+import { connect } from "react-redux"
+import image from './noimage.svg'
+import './styles.css'
 
-const mapStateToProps = (state) =>{
+const mapStateToProps = (state) => {
     return {
         post: state.post
     }
 }
 
-class ConnectedPostDetails extends Component{
+class ConnectedPostDetails extends Component {
 
-    render(){
+    render() {
         console.log("Post details");
-        
+
         console.log(this.props.post);
-        const {title, body, creator, date} = this.props.post;
+        const { title, body, creator, date } = this.props.post;
         return (
-            <div>
-            <div>{`Title: ${title}`}</div>
-            <div>{`Body: ${body}`}</div>
-            <div>{`Author: ${creator}`}</div>
-            <div>{`Date: ${date}`}</div>
-            </div>
-            
+            <article className="details-block">
+                <header className="header-block-details">
+                <span>{date}</span>
+                <span>{`Author: ${creator}`}</span>
+                <h1 className="details-block-title">{title}</h1>
+                
+                
+                </header>
+                <img className="img-det-block" src={image} />
+                <p>{body}</p>
+               
+            </article>
+
         )
     }
 }
