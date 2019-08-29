@@ -6,40 +6,44 @@ const checkDataOnCorrect = (data, text) => {
   return text;
 };
 
+
+
+const checkPost = (post) => {
+  const {creator, title, date, body} = post;
+
+  return { ...post, 
+    creator: checkDataOnCorrect(creator, 'Noname'),
+    title: checkDataOnCorrect(title, 'No title'),
+    date: checkDataOnCorrect(date, '00/00/0000'),
+    body: checkDataOnCorrect(body, 'No text')}
+}
+
+const checkPostsOnCorrect = (posts) => {
+  const fixedDataPosts = _.map(posts, post => (_.isArray(post) ? post[0] : post));
+
+  return _.map(fixedDataPosts, checkPost);
+}
+
 const fixDataApiMiddleware = ({ dispatch }) => next => action => {
   switch (action.type) {
     case 'GET_POSTS_SUCCESS': {
-      const posts = action.payload.data;
+      const newAction = {...action}
+      newAction.payload.data = checkPostsOnCorrect(newAction.payload.data);
 
-      const fixedDataPosts = _.map(posts, post => (_.isArray(post) ? post[0] : post));
-
-      _.map(posts, post => {
-        post.creator = checkDataOnCorrect(post.creator, 'Noname');
-        post.title = checkDataOnCorrect(post.title, 'No title');
-        post.date = checkDataOnCorrect(post.date, '00/00/0000');
-        post.body = checkDataOnCorrect(post.body, 'No text');
-      });
-
-      action.payload.data = fixedDataPosts;
-      return next(action);
+      return next(newAction);
     }
 
     case 'CREATE_COMMENT_SUCCESS': {
-      dispatch(getPostById(action.payload.data.postId));
-      break;
+      return dispatch(getPostById(action.payload.data.postId));
+
     }
 
     case 'GET_POST_SUCCESS': {
-      const post = { ...action.payload.data };
+      const newAction = { ...action };
 
-      post.title = checkDataOnCorrect(post.title, 'No title');
-      post.creator = checkDataOnCorrect(post.creator, 'Noname');
-      post.date = checkDataOnCorrect(post.date, '00/00/0000');
-      post.body = checkDataOnCorrect(post.body, 'No text');
+      newAction.payload.data = checkPost(newAction.payload.data)
 
-      action.payload.data = post;
-
-      return next(action);
+      return next(newAction);
     }
 
     default: {
@@ -47,5 +51,7 @@ const fixDataApiMiddleware = ({ dispatch }) => next => action => {
     }
   }
 };
+
+
 
 export default fixDataApiMiddleware;
