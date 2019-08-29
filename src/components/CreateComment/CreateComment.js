@@ -7,11 +7,11 @@ import './style.css';
 const mapDispatchToProps = dispatch => ({
   createCommentInPost: data => {
     dispatch(createCommentInPost(data));
-  }
+  },
 });
 
 const mapStateToProps = state => ({
-  id: state.post.id
+  id: state.post.id,
 });
 
 class ConnectedCreateComment extends Component {
@@ -19,7 +19,7 @@ class ConnectedCreateComment extends Component {
     super();
 
     this.state = {
-      comment: ''
+      comment: '',
     };
 
     this.onHandleChange = this.onHandleChange.bind(this);
@@ -28,7 +28,7 @@ class ConnectedCreateComment extends Component {
 
   onHandleChange(e) {
     this.setState({
-      comment: e.target.value
+      comment: e.target.value,
     });
   }
 
@@ -39,11 +39,11 @@ class ConnectedCreateComment extends Component {
     this.props.createCommentInPost({
       postId: id,
       body: this.state.comment,
-      date: new Date().toLocaleString()
+      date: new Date().toLocaleString(),
     });
 
     this.setState({
-      comment: ''
+      comment: '',
     });
   }
 
@@ -67,6 +67,6 @@ class ConnectedCreateComment extends Component {
 
 const CreateComment = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(ConnectedCreateComment);
 export default CreateComment;

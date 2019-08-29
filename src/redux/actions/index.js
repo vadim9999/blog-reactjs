@@ -2,9 +2,9 @@ const getPosts = () => ({
   type: 'GET_POSTS',
   payload: {
     request: {
-      url: '/posts'
-    }
-  }
+      url: '/posts',
+    },
+  },
 });
 
 const getPostById = id => ({
@@ -13,10 +13,10 @@ const getPostById = id => ({
     request: {
       url: `/posts/${id}`,
       params: {
-        _embed: 'comments'
-      }
-    }
-  }
+        _embed: 'comments',
+      },
+    },
+  },
 });
 
 const createCommentInPost = ({ postId, body, date }) => ({
@@ -29,10 +29,10 @@ const createCommentInPost = ({ postId, body, date }) => ({
       data: {
         postId: parseInt(postId, 10),
         body,
-        date
-      }
-    }
-  }
+        date,
+      },
+    },
+  },
 });
 
 export { getPosts, getPostById, createCommentInPost };

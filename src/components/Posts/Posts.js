@@ -5,7 +5,7 @@ import ListPosts from '../ListPosts/ListPosts';
 import './styles.css';
 
 const mapDispatchToProps = dispatch => ({
-  getPosts: () => dispatch(getPosts())
+  getPosts: () => dispatch(getPosts()),
 });
 
 class ConnectedPosts extends Component {
@@ -24,6 +24,6 @@ class ConnectedPosts extends Component {
 
 const Posts = connect(
   null,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(ConnectedPosts);
 export default Posts;

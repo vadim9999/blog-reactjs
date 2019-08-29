@@ -10,7 +10,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router />
   </Provider>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
 
 serviceWorker.unregister();

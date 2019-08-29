@@ -5,7 +5,7 @@ import uuidv1 from 'uuid/v1';
 import './style.css';
 
 const mapStateToProps = state => ({
-  comments: state.post.comments
+  comments: state.post.comments,
 });
 
 class ConnectedComments extends Component {

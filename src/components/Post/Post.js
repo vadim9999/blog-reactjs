@@ -7,7 +7,7 @@ import PostDetails from '../PostDetails/PostDetails';
 import './styles.css';
 
 const mapDispatchToProps = dispatch => ({
-  getPostById: id => dispatch(getPostById(id))
+  getPostById: id => dispatch(getPostById(id)),
 });
 
 class ConnectedPost extends Component {
@@ -31,6 +31,6 @@ class ConnectedPost extends Component {
 
 const Post = connect(
   null,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(ConnectedPost);
 export default Post;

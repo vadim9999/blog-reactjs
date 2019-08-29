@@ -1,6 +1,6 @@
 const initialState = {
   posts: [],
-  post: {}
+  post: {},
 };
 
 const postsReducer = (state = initialState, action) => {
@@ -10,14 +10,14 @@ const postsReducer = (state = initialState, action) => {
         ...state,
         posts: action.payload.data,
         post: {},
-        comments: []
+        comments: [],
       };
     }
 
     case 'GET_POST_SUCCESS': {
       return {
         ...state,
-        post: action.payload.data
+        post: action.payload.data,
       };
     }
 

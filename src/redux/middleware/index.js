@@ -11,9 +11,7 @@ const fixDataApiMiddleware = ({ dispatch }) => next => action => {
     case 'GET_POSTS_SUCCESS': {
       const posts = action.payload.data;
 
-      const fixedDataPosts = _.map(posts, post =>
-        _.isArray(post) ? post[0] : post
-      );
+      const fixedDataPosts = _.map(posts, post => (_.isArray(post) ? post[0] : post));
 
       _.map(posts, post => {
         post.creator = checkDataOnCorrect(post.creator, 'Noname');

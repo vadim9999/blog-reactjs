@@ -4,7 +4,7 @@ import image from './noimage.svg';
 import './styles.css';
 
 const mapStateToProps = state => ({
-  post: state.post
+  post: state.post,
 });
 
 class ConnectedPostDetails extends Component {
