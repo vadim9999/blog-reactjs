@@ -1,64 +1,53 @@
-import _ from "lodash"
-import { getPostById } from "../actions";
+import _ from 'lodash';
+import { getPostById } from '../actions';
 
-export const fixDataApiMiddleware = ({dispatch}) =>{
-    console.log("MIddleWare");
-    
-    return (next) =>{
-        return (action) =>{
-            console.log("CallMiddleWare");
-            console.log(action);
-            
-            switch(action.type){
-                case "GET_POSTS_SUCCESS":
-                        let posts = action.payload.data;
+const checkDataOnCorrect = (data, text) => {
+  if (data !== undefined && data.length > 0) return data;
+  return text;
+};
 
-                        let fixedDataPosts = _.map(posts,(post) =>{
-                            return  _.isArray(post) ? 
-                            post[0] : post;
-                            
-                        })
-                        
-                        _.map(posts, (post) => {
-                            post.creator = checkDataOnCorrect(post.creator, "Noname")
-                            post.date = checkDataOnCorrect(post.date, "00/00/0000")
-                        })
-                        
-                        action.payload.data = fixedDataPosts
-                        return next(action)
+const fixDataApiMiddleware = ({ dispatch }) => next => action => {
+  switch (action.type) {
+    case 'GET_POSTS_SUCCESS': {
+      const posts = action.payload.data;
 
-                case "CREATE_COMMENT_SUCCESS":  
-                    dispatch(getPostById(action.payload.data.postId))
-                    break;
-                    
-                case "GET_POST_SUCCESS":
-                        let post = action.payload.data;
+      const fixedDataPosts = _.map(posts, post =>
+        _.isArray(post) ? post[0] : post
+      );
 
-                        
-                        post.title = checkDataOnCorrect(post.title, "No title") 
-                        post.creator = checkDataOnCorrect(post.creator, "Noname")
-                        post.date = checkDataOnCorrect(post.date, "00/00/0000")
-                        post.body = checkDataOnCorrect(post.body, "00/00/0000")
-                        action.payload.data = post;
-                        // post.
-                        // if(post.title == undefined & post.title.length <= 0) post.title = "No title" 
-                        
-                    return next(action);
-                    
-                default:
-                        return next(action);
-            }
+      _.map(posts, post => {
+        post.creator = checkDataOnCorrect(post.creator, 'Noname');
+        post.title = checkDataOnCorrect(post.title, 'No title');
+        post.date = checkDataOnCorrect(post.date, '00/00/0000');
+        post.body = checkDataOnCorrect(post.body, 'No text');
+      });
 
-        
-            
-
-            
-        }
+      action.payload.data = fixedDataPosts;
+      return next(action);
     }
-} 
 
-const checkDataOnCorrect = (data, text)=>{
-    if(data != undefined && data.length >= 0)
-    return  data;
-    else return text;
-}
+    case 'CREATE_COMMENT_SUCCESS': {
+      dispatch(getPostById(action.payload.data.postId));
+      break;
+    }
+
+    case 'GET_POST_SUCCESS': {
+      const post = { ...action.payload.data };
+
+      post.title = checkDataOnCorrect(post.title, 'No title');
+      post.creator = checkDataOnCorrect(post.creator, 'Noname');
+      post.date = checkDataOnCorrect(post.date, '00/00/0000');
+      post.body = checkDataOnCorrect(post.body, 'No text');
+
+      action.payload.data = post;
+
+      return next(action);
+    }
+
+    default: {
+      return next(action);
+    }
+  }
+};
+
+export default fixDataApiMiddleware;
