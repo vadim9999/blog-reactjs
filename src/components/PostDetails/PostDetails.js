@@ -17,7 +17,11 @@ class ConnectedPostDetails extends Component {
           <span>{`Author: ${creator}`}</span>
           <h1 className="details-block-title">{title}</h1>
         </header>
-        <img className="img-det-block" alt="No" src={image} />
+        <img
+          className="img-det-block" 
+          alt="No"
+          src={image}
+        />
         <p>{body}</p>
       </article>
     );

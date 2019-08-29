@@ -20,7 +20,11 @@ class ConnectedListPosts extends Component {
           {_.map(posts, post => {
             const { id, title, body, creator, date } = post;
             return (
-              <Link key={uuidv1()} style={{ textDecoration: 'none', color: 'black' }} to={`/posts/${id}`}>
+              <Link
+                key={uuidv1()} 
+                style={{ textDecoration: 'none', color: 'black' }} 
+                to={`/posts/${id}`}
+              >
                 <div className="post" key={uuidv1()}>
                   <div className="date-post">
                     <i>{date.slice(0, 9)}</i>

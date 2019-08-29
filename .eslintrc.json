@@ -24,15 +24,15 @@
     ],
     "rules": {
         "max-len": ["error", {"code": 100}],
-        "prefer-promise-reject-errors": ["off"],
+        // "prefer-promise-reject-errors": ["off"],
         "react/jsx-filename-extension": ["off"],
         "react/prop-types": ["off"],
         "no-return-assign": ["off"],
         "react/prefer-stateless-function" :["off"],
         "react/destructuring-assignment" :["off"],
         "no-param-reassign":["off"],
-        "consistent-return":["off"],
-        "no-use-before-define":["off"]
+        "consistent-return":["off"]
+        // "no-use-before-define":["off"]
     
      
     }
