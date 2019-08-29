@@ -14,11 +14,16 @@ Used frameworks/libraries:
 
 ### Starting up project
 
-```
-npm install
-```
 
 Scripts for starting:
+
+- project:
+
+
+```
+npm install
+npm start
+```
 
 - eslint:
 
