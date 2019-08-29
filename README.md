@@ -39,7 +39,7 @@ npm run format
 
 API of postman can return empty fields then I wrote middleware https://github.com/vadim9999/blog-reactjs/blob/master/src/redux/middleware/index.js that fix this. It's replacing empty or undefined field just simple words "Noname", "00-00-0000", "No text".
 
-APP consists two pages their urls:
+APP consists two pages. Their urls:
 
 - `/` - display all posts
 - `/posts/:id` - display post by id.
