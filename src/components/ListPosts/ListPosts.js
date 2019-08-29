@@ -21,8 +21,8 @@ class ConnectedListPosts extends Component {
             const { id, title, body, creator, date } = post;
             return (
               <Link
-                key={uuidv1()} 
-                style={{ textDecoration: 'none', color: 'black' }} 
+                key={uuidv1()}
+                style={{ textDecoration: 'none', color: 'black' }}
                 to={`/posts/${id}`}
               >
                 <div className="post" key={uuidv1()}>

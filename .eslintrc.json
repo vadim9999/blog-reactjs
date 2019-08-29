@@ -26,7 +26,6 @@
         "max-len": ["error", {"code": 100}],
         "react/jsx-filename-extension": ["off"],
         "react/prop-types": ["off"],
-        "no-return-assign": ["off"],
         "react/prefer-stateless-function" :["off"],
         "react/destructuring-assignment" :["off"]  
     }

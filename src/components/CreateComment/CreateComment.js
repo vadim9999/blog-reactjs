@@ -34,9 +34,9 @@ class ConnectedCreateComment extends Component {
 
   onHandleClick(e) {
     e.preventDefault();
-    const { id, createCommentInPost } = this.props;
+    const { id } = this.props;
 
-    createCommentInPost({
+    this.props.createCommentInPost({
       postId: id,
       body: this.state.comment,
       date: new Date().toLocaleString(),
