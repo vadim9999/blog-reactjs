@@ -8,10 +8,7 @@ const checkDataOnCorrect = (data, text) => {
 
 const checkPost = post => {
   const { creator, title, date, body } = post;
-  if (creator === undefined){
-    console.log("Undefined");
-    
-  }
+
   return {
     ...post,
     creator: checkDataOnCorrect(creator, 'Noname'),
@@ -22,7 +19,9 @@ const checkPost = post => {
 };
 
 const checkPostsOnCorrect = posts => {
-  const fixedDataPosts = _.map(posts, post => (_.isArray(post) ? post[0] : post));
+  console.log(posts);
+  
+  const fixedDataPosts = _.map(posts, post => (_.isArray(post) ? 0: post));
 
   return _.map(fixedDataPosts, checkPost);
 };
