@@ -17,7 +17,7 @@ In project was used frameworks/libraries:
 
 <img src="https://github.com/vadim9999/blog-reactjs/blob/master/screenshots/screenshot1.png">
 
-<img src="https://github.com/vadim9999/blog-reactjs/blob/master/screenshots/screenshot2.png.">
+<img src="https://github.com/vadim9999/blog-reactjs/blob/master/screenshots/screenshot2.png">
 
 
 ### Starting up project
