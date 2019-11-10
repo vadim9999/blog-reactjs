@@ -8,7 +8,10 @@ const checkDataOnCorrect = (data, text) => {
 
 const checkPost = post => {
   const { creator, title, date, body } = post;
-
+  if (creator === undefined){
+    console.log("Undefined");
+    
+  }
   return {
     ...post,
     creator: checkDataOnCorrect(creator, 'Noname'),

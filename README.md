@@ -36,7 +36,7 @@ npm run lint
 ```
 npm run format
 ```
-
+[API postman](https://documenter.getpostman.com/view/1917440/RzteTChV?version=latest)
 API of postman can return empty fields then I wrote middleware https://github.com/vadim9999/blog-reactjs/blob/master/src/redux/middleware/index.js that fix this. It's replacing empty or undefined field just simple words "Noname", "00-00-0000", "No text".
 
 APP consists two pages. Their urls:
