@@ -12,6 +12,11 @@ In project was used frameworks/libraries:
 - Eslint
 - Prettier
 
+
+### Screenshots
+
+<img src="https://github.com/vadim9999/blog-reactjs/blob/master/screenshots/screenshot1.png">
+
 ### Starting up project
 
 
